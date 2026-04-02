@@ -1,6 +1,25 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+"""
+Model architecture
+
+User
+ ├── username (CharField)
+ ├── email (EmailField)
+ ├── password (CharField)
+ ├── is_seller (BooleanField)
+ ├── is_active (BooleanField)
+ └── date_joined (DateTimeField)
+
+Profile (опционально)
+ ├── user (OneToOne → User)
+ ├── avatar (ImageField)
+ ├── phone (CharField)
+ └── address (TextField)
+
+"""
+
 class User(AbstractUser):
     ROLE_CHOICES = (
         ("admin","Admin"),
