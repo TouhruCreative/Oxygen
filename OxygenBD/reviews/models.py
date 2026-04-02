@@ -25,5 +25,5 @@ class Review(models.Model):
     class Meta:
         verbose_name = "Review"
     
-    def str():
+    def __str__():
         return f"{self.user} rated {self.product}: {self.rating}"

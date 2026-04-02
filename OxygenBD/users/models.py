@@ -37,8 +37,8 @@ class User(AbstractUser):
     def __str__(self):
         return self.email
     
-class Profile():
+class Profile(models.Model):
     user = models.OneToOneField(User, verbose_name="Profile", on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=None)
-    phone = models.PhoneNumberField()
+    phone = models.CharField(max_length=50, unique=True)
     address = models.TextField()
