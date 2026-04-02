@@ -6,9 +6,10 @@ Model architecture
 Category
  ├── name (CharField)
  ├── parent (FK → Category, null=True)
+
 """
 # TODO complete parent
-class Shop(models.Model):
+class Category(models.Model):
 
     name = models.CharField()
     parent = None
