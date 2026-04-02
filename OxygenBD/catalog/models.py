@@ -49,6 +49,11 @@ class Product(models.Model):
     description = models.TextField()
     is_active = models.BooleanField()
     created_at = models.DateTimeField(auto_now=True, auto_now_add=True)
+    class Meta:
+        verbose_name = "Product"
+    
+    def __str__(self):
+        return self.name
 
 class ProductVariant(models.Model):
     product = models.ForeignKey(Product, verbose_name=_(""), on_delete=models.CASCADE)
@@ -57,8 +62,18 @@ class ProductVariant(models.Model):
     stock = models.IntegerField()
     color = models.CharField(max_length=50)
     size = models.CharField(max_length=50)
+    class Meta:
+        verbose_name = "Product Variant"
+    
+    def __str__(self):
+        return self.name
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, verbose_name=_(""), on_delete=models.CASCADE)
     image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=None)
     is_main = models.BooleanField()
+    class Meta:
+        verbose_name = "Product Image"
+
+    def __str__(self):
+        return f"{self.product} Image"

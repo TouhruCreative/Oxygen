@@ -23,7 +23,6 @@ class Shop(models.Model):
     
     class Meta:
         verbose_name = _("Shop")
-        verbose_name_plural = _("s")
 
     def str(self):
         return self.name

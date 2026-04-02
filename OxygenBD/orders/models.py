@@ -26,7 +26,9 @@ class Order(models.Model):
     created_at = models.DateField(auto_now=False, auto_now_add=True)
     class Meta:
         verbose_name = "Order"
-        verbose_name_plural = "o"
+
+    def __str__(self):
+        return f"{self.user} order: {self.status}"
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, verbose_name="Order", on_delete=models.CASCADE)
@@ -35,4 +37,6 @@ class OrderItem(models.Model):
     price = models.DecimalField( max_digits=5, decimal_places=2)
     class Meta:
         verbose_name = "Order Item"
-        verbose_name_plural = "oi"
+
+    def __str__(self):
+        return self.order
