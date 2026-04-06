@@ -1,0 +1,20 @@
+# ignore IDE
+.vscode/
+.idea/
+
+# Django
+db.sqlite3
+*.log
+
+# Environment variables
+#.env
+
+# Virtual Environment
+.venv
+env/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo

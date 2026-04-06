@@ -22,8 +22,7 @@ class Shop(models.Model):
     created_at = models.DateField(auto_now=False, auto_now_add=False)
     
     class Meta:
-        verbose_name = _("Shop")
-        verbose_name_plural = _("s")
-
+        verbose_name = "Shop"
+        
     def __str__(self):
         return self.name
