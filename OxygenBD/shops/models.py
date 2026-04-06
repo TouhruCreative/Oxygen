@@ -1,5 +1,5 @@
 from django.db import models
-
+from users.models import User
 """
 Model architecture
 
@@ -11,11 +11,9 @@ Shop
  ├── created_at (DateTimeField)
 """
 
-# TODO complete owner, when user update
-
 class Shop(models.Model):
 
-    owner = models.ForeignKey("", verbose_name="Owner", on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, verbose_name="Owner", on_delete=models.CASCADE)
     name = models.CharField(max_length=50,verbose_name="Shop name")
     description = models.TextField()
     rating = models.FloatField()
@@ -23,6 +21,6 @@ class Shop(models.Model):
     
     class Meta:
         verbose_name = "Shop"
-        
+
     def __str__(self):
         return self.name
