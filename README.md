@@ -19,5 +19,5 @@ source .venv\bin\activate
 pip install -r requirements.txt
 ```
 
-## WARN
+## and Important
 Please fill .env file
