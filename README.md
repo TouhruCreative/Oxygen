@@ -3,7 +3,7 @@
 Oxygen - project written on python with using DRF (Django + Restframework)
 
 # How install project
-##Windows
+## Windows
 ```
 git clone https://github.com/TouhruCreative/Oxygen.git
 python -m venv venv
@@ -11,7 +11,7 @@ python -m venv venv
 pip install -r requirements.txt
 ```
 
-##Linux
+## Linux
 ```
 git clone https://github.com/TouhruCreative/Oxygen.git
 python -m venv venv
