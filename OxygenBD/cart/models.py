@@ -16,8 +16,8 @@ Cart
 """
 
 class Cart(models.Model):
-    user = models.OneToOneField(User, verbose_name=_(""), on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now=True, auto_now_add=True)
+    user = models.OneToOneField(User, verbose_name="User", on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
     class Meta:
         verbose_name = "Cart"
     
@@ -25,8 +25,8 @@ class Cart(models.Model):
         return f"{self.user} cart"
 
 class CartItem(models.Model):
-    cart = models.ForeignKey(Cart, verbose_name=_(""), on_delete=models.CASCADE)
-    product_variant = models.ForeignKey(ProductVariant, verbose_name=_(""), on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, verbose_name="Cart", on_delete=models.CASCADE)
+    product_variant = models.ForeignKey(ProductVariant, verbose_name="Product Variant", on_delete=models.CASCADE)
     quantity = models.IntegerField()
 
     class Meta:

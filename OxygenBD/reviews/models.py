@@ -20,7 +20,7 @@ class Review(models.Model):
     product = models.ForeignKey(Product, verbose_name="Product", on_delete=models.CASCADE)
     rating = models.IntegerField()
     text = models.TextField() 
-    created_at =models.DateTimeField(auto_now=True, auto_now_add=True)
+    created_at =models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = "Review"

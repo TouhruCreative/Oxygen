@@ -10,7 +10,7 @@ User
  ├── password (CharField)
  ├── is_seller (BooleanField)
  ├── is_active (BooleanField)
- └── date_joined (DateTimeField)
+ └── date_joined (DateTimeField) mb
 
 Profile (опционально)
  ├── user (OneToOne → User)
@@ -30,6 +30,21 @@ class User(AbstractUser):
     username = models.CharField(blank=True,null=True)
     email = models.EmailField(unique=True)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES)
+
+    groups = models.ManyToManyField(
+        "auth.Group",
+        related_name="custom_user_set",
+        blank=True,
+        help_text="The groups this user belongs to.",
+        verbose_name="groups"
+    )
+    user_permissions = models.ManyToManyField(
+        "auth.Permission",
+        related_name="custom_user_permissions_set",
+        blank=True,
+        help_text="Specific permissions for this user.",
+        verbose_name="user permissions"
+    )
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []

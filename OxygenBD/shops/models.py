@@ -17,7 +17,7 @@ class Shop(models.Model):
     name = models.CharField(max_length=50,verbose_name="Shop name")
     description = models.TextField()
     rating = models.FloatField()
-    created_at = models.DateField(auto_now=False, auto_now_add=False)
+    created_at = models.DateField(auto_now_add=True)
     
     class Meta:
         verbose_name = "Shop"

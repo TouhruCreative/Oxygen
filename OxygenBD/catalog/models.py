@@ -36,19 +36,18 @@ class Category(models.Model):
     parent = None
     
     class Meta:
-        verbose_name = _("Category")
-        verbose_name_plural = _("c")
+        verbose_name = "Category"
 
     def str(self):
         return self.name
 
 class Product(models.Model):
-    shop = models.ForeignKey(Shop, verbose_name=_(""), on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, verbose_name=_(""), on_delete=models.CASCADE)
+    shop = models.ForeignKey(Shop, verbose_name="Shop", on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, verbose_name="Category", on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     description = models.TextField()
     is_active = models.BooleanField()
-    created_at = models.DateTimeField(auto_now=True, auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     class Meta:
         verbose_name = "Product"
     
@@ -56,7 +55,7 @@ class Product(models.Model):
         return self.name
 
 class ProductVariant(models.Model):
-    product = models.ForeignKey(Product, verbose_name=_(""), on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, verbose_name="Product Variant", on_delete=models.CASCADE)
     sku = models.CharField(Product, max_length=50)
     price = models.DecimalField(max_digits=5, decimal_places=2)
     stock = models.IntegerField()
@@ -69,7 +68,7 @@ class ProductVariant(models.Model):
         return self.name
 
 class ProductImage(models.Model):
-    product = models.ForeignKey(Product, verbose_name=_(""), on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, verbose_name="Product Image", on_delete=models.CASCADE)
     image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=None)
     is_main = models.BooleanField()
     class Meta:

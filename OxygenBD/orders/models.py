@@ -25,7 +25,7 @@ class Order(models.Model):
     user = models.ForeignKey(User, verbose_name="user", on_delete=models.CASCADE)
     status = models.CharField(max_length=50)
     total_price = models.DecimalField(max_digits=5, decimal_places=2)
-    created_at = models.DateField(auto_now=False, auto_now_add=True)
+    created_at = models.DateField(auto_now_add=True)
     class Meta:
         verbose_name = "Order"
 
