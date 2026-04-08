@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Вход{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'users/styles/login.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <div class="title">Вход</div>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <input class="input" type="email" name="email" placeholder="Email" required>
+        <input class="input" type="password" name="password" placeholder="Пароль" required>
+
+        <button class="button" type="submit">Войти</button>
+    </form>
+
+    <a href="#" class="link">Нет аккаунта? Зарегистрироваться</a>
+</div>
+
+{% endblock %}
