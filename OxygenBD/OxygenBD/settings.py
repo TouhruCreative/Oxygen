@@ -79,6 +79,8 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.User'
+
 WSGI_APPLICATION = 'OxygenBD.wsgi.application'
 
 
