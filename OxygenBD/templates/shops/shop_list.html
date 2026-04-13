@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Магазины{% endblock %}
+
+{% block content %}
+
+<h2>Магазины</h2>
+
+<a href="{% url 'shop_create' %}" class="button">Создать магазин</a>
+
+<div style="margin-top: 20px;">
+    {% for shop in shops %}
+        <div class="card" style="margin-bottom: 15px;">
+            <h3>{{ shop.name }}</h3>
+            <p>{{ shop.description|truncatechars:100 }}</p>
+            <p>Рейтинг: {{ shop.rating }}</p>
+
+            <a href="{% url 'shop_detail' shop.id %}">Открыть</a>
+        </div>
+    {% empty %}
+        <p>Магазинов пока нет</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

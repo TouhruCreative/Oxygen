@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Products</h1>
+
+<a href="{% url 'catalog:product_create' %}">+ Create product</a>
+<style>
+    ul {
+    list-style: none; /* Убирает точки */
+    padding: 0;       /* Убирает отступы слева */
+    margin: 0;        /* Убирает внешние отступы */
+}
+</style>
+<ul >
+    {% for product in products %}
+        <li>
+            <div class="card">
+            <a href="{% url 'catalog:product_detail' product.pk %}">
+                {{ product.name }}
+            </a>
+        </div>
+        </li>
+    {% empty %}
+        <p>No products</p>
+    {% endfor %}
+</ul>
+
+{% endblock %}

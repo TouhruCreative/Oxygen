@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Удаление{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <h2>Удалить магазин?</h2>
+
+    <p><strong>{{ shop.name }}</strong></p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button class="button" style="background:red;">Да, удалить</button>
+    </form>
+
+    <a href="{% url 'shop_detail' shop.id %}" class="link">Отмена</a>
+
+</div>
+
+{% endblock %}

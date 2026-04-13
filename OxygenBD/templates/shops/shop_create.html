@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Создать магазин{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <h2>Создать магазин</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <input class="input" type="text" name="name" placeholder="Название" required>
+
+        <textarea class="input" name="description" placeholder="Описание"></textarea>
+
+        <button class="button" type="submit">Создать</button>
+    </form>
+
+</div>
+
+{% endblock %}

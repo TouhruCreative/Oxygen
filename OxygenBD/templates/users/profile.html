@@ -1,14 +1,13 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Профиль</title>
 
-    <link rel="stylesheet" href="{% static 'users/styles/base.css' %}">
-    <link rel="stylesheet" href="{% static 'users/styles/profile.css' %}">
-</head>
-<body>
+{% block title %}Профиль{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'users/styles/profile.css' %}">
+{% endblock %}
+
+{% block content %}
 
 <div class="container">
     <div class="profile-card">
@@ -20,10 +19,9 @@
         </div>
 
         <div class="profile-actions">
-            <a href="/logout/" class="btn logout">Выйти</a>
+            <a href="{% url 'logout' %}" class="btn logout">Выйти</a>
         </div>
     </div>
 </div>
 
-</body>
-</html>
+{% endblock %}

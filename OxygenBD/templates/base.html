@@ -5,24 +5,23 @@
     <meta charset="UTF-8">
     <title>{% block title %}Oxygen{% endblock %}</title>
 
-    <link rel="stylesheet" href="{% static 'users/styles/base.css' %}">
+    <link rel="stylesheet" href="{% static 'global/base.css' %}">
     {% block styles %}{% endblock %}
 </head>
 <body>
 
-<!-- Navbar -->
 <div class="navbar">
     <div class="nav-container">
         <a href="/" class="logo">Oxygen</a>
 
         <div class="nav-links">
             <a href="{% url 'profile' %}">Профиль</a>
-            <a href="/logout/">Выйти</a>
+            <a href="{% url 'logout' %}">Выйти</a>
         </div>
     </div>
 </div>
 
-<div class="main">
+<div class="app-container">
     {% block content %}{% endblock %}
 </div>
 

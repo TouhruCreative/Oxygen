@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Редактировать{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <h2>Редактирование</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <input class="input" type="text" name="name" value="{{ shop.name }}" required>
+
+        <textarea class="input" name="description">{{ shop.description }}</textarea>
+
+        <button class="button" type="submit">Сохранить</button>
+    </form>
+
+</div>
+
+{% endblock %}
