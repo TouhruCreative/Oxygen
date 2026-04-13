@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "auth_base.html" %}
 {% load static %}
 
 {% block title %}Регистрация{% endblock %}
@@ -8,24 +8,16 @@
 {% endblock %}
 
 {% block content %}
-
-<div class="card">
-    <div class="title">Регистрация</div>
-
-    {% if error %}
-        <div class="error">{{ error }}</div>
-    {% endif %}
+<div class="login-card">
+    <h2>Регистрация</h2>
 
     <form method="post">
         {% csrf_token %}
-
-        <input class="input" type="email" name="email" placeholder="Email" required>
-        <input class="input" type="password" name="password" placeholder="Пароль" required>
-
-        <button class="button" type="submit">Зарегистрироваться</button>
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Пароль">
+        <button type="submit">Создать аккаунт</button>
     </form>
 
-    <a href="{% url 'login' %}" class="link">Уже есть аккаунт? Войти</a>
+    <a href="{% url 'login' %}">Уже есть аккаунт?</a>
 </div>
-
 {% endblock %}
