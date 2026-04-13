@@ -20,6 +20,9 @@ Profile (опционально)
  └── address (TextField)
 
 """
+from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.db import models
+
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -37,10 +40,16 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
 
+        if extra_fields.get("is_staff") is not True:
+            raise ValueError("Superuser must have is_staff=True")
+        if extra_fields.get("is_superuser") is not True:
+            raise ValueError("Superuser must have is_superuser=True")
+
         return self.create_user(email, password, **extra_fields)
 
+
 class User(AbstractUser):
-    username = None
+    username = None  # убираем username
 
     ROLE_CHOICES = (
         ("admin", "Admin"),
@@ -49,18 +58,26 @@ class User(AbstractUser):
     )
 
     email = models.EmailField(unique=True)
-    role = models.CharField(max_length=20, choices=ROLE_CHOICES)
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES, default="client")
 
     objects = UserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ["role"]
 
     def __str__(self):
         return self.email
-    
+
+
 class Profile(models.Model):
-    user = models.OneToOneField(User, verbose_name="Profile", on_delete=models.CASCADE)
-    avatar = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=None)
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name="profile"
+    )
+    avatar = models.ImageField(upload_to="avatars/", blank=True, null=True)
     phone = models.CharField(max_length=50, unique=True)
     address = models.TextField()
+
+    def __str__(self):
+        return f"Profile of {self.user.email}"
