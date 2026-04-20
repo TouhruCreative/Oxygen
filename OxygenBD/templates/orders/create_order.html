@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Создать заказ{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'orders/styles/orders.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="orders-card">
+
+    <h2>Создание заказа</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn">Создать</button>
+    </form>
+
+</div>
+{% endblock %}

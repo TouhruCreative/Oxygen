@@ -3,7 +3,7 @@
 {% block title %}{{ shop.name }}{% endblock %}
 
 {% block content %}
-
+<a href="{% url 'shop_list' %}" class="link">← Назад</a>
 <div class="card">
 
     <h2>{{ shop.name }}</h2>
@@ -13,12 +13,24 @@
     <p><strong>Рейтинг:</strong> {{ shop.rating }}</p>
     <p><strong>Создан:</strong> {{ shop.created_at }}</p>
 
+
     {% if user == shop.owner %}
         <a href="{% url 'shop_edit' shop.id %}" class="button">Редактировать</a>
         <a href="{% url 'shop_delete' shop.id %}" class="button" style="background:red;">Удалить</a>
     {% endif %}
 
-    <a href="{% url 'shop_list' %}" class="link">← Назад</a>
+    <h2>Товары</h2>
+
+    {% for product in products %}
+        <div class="card">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description|truncatechars:100 }}</p>
+            <p>Цена: {{ product.price }}</p>
+        </div>
+    {% empty %}
+        <p>Товаров нет</p>
+    {% endfor %}
+    
 
 </div>
 

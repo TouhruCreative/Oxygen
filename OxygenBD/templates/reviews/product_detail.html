@@ -1,0 +1,18 @@
+<h2>Отзывы</h2>
+
+{% for review in product.reviews.all %}
+    <div>
+        <strong>{{ review.user }}</strong>
+        <p>Оценка: {{ review.rating }}/5</p>
+        <p>{{ review.text }}</p>
+
+        {% if review.user == request.user %}
+            <a href="{% url 'reviews:review_update' review.pk %}">Редактировать</a>
+            <a href="{% url 'reviews:review_delete' review.pk %}">Удалить</a>
+        {% endif %}
+    </div>
+{% empty %}
+    <p>Отзывов пока нет</p>
+{% endfor %}
+
+<a href="{% url 'reviews:review_create' product.id %}">Оставить отзыв</a>

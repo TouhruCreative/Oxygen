@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Product, Category
 from .forms import ProductForm, CategoryForm
 
+from users.permissions import role_required
+
 def product_list_view(request):
     products = Product.objects.all()
     return render(request, "catalog/product_list.html", {"products": products})
@@ -57,6 +59,7 @@ def category_list_view(request):
     categories = Category.objects.all()
     return render(request, "catalog/category_list.html", {"categories": categories})
 
+@role_required(["admin", "moderator"])
 def category_create_view(request):
     if request.method == "POST":
         form = CategoryForm(request.POST)
@@ -68,6 +71,7 @@ def category_create_view(request):
 
     return render(request, "catalog/category_form.html", {"form": form})
 
+@role_required(["admin", "moderator"])
 def category_update_view(request, pk):
     category = get_object_or_404(Category, pk=pk)
 
@@ -81,6 +85,7 @@ def category_update_view(request, pk):
 
     return render(request, "catalog/category_form.html", {"form": form})
 
+@role_required(["admin", "moderator"])
 def category_delete_view(request, pk):
     category = get_object_or_404(Category, pk=pk)
 

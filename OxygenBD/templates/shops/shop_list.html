@@ -6,10 +6,11 @@
 {% block content %}
 
 <h2>Магазины</h2>
-
-<a href="{% url 'shop_create' %}" class="button">Создать магазин</a>
-
-<div style="margin-top: 20px;">
+</br>
+{% if user.role == "admin" %}
+<a href="{% url 'shop_create' %}" style="margin-top: 100px;" class="button" >Создать магазин</a>
+{% endif %}
+<div style="margin-top: 50px;">
     {% for shop in shops %}
         <div class="card" style="margin-bottom: 15px;">
             <h3>{{ shop.name }}</h3>

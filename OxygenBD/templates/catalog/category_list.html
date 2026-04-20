@@ -3,9 +3,15 @@
 {% block content %}
 
 <h1>Categories</h1>
-
-<a href="{% url 'catalog:category_create' %}">+ Create category</a>
-
+{% if user.role == "admin" %}
+    <a href="{% url 'catalog:category_create' %}">+ Create category</a>
+{% endif %}
+<style>
+    ul {
+    list-style: none; /* Убирает точки */
+    padding: 0;       /* Убирает отступы слева */
+    margin: 0;        /* Убирает внешние отступы */
+}
 <ul>
     {% for category in categories %}
         <li>

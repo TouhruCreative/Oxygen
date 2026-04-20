@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Мои заказы{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'orders/styles/orders.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="orders-card">
+
+    <h2>Мои заказы</h2>
+
+    <a href="{% url 'create_order' %}" class="btn">Создать заказ</a>
+
+    <div class="orders-list">
+        {% for order in orders %}
+            <a href="{% url 'order_detail' order.id %}" class="order-item">
+                Заказ #{{ order.id }} — {{ order.status }}
+            </a>
+        {% empty %}
+            <p>У вас пока нет заказов</p>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

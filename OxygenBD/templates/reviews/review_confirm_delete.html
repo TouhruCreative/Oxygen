@@ -1,0 +1,14 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+<h1>Удалить отзыв?</h1>
+
+<p>{{ review.text }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Да, удалить</button>
+</form>
+
+<a href="javascript:history.back()">Отмена</a>
+{% endblock %}

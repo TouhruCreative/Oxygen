@@ -78,3 +78,8 @@ oxygen/
  │
  ├── requirements.txt
  └── .env
+
+
+
+ ---
+ TODO: rewrite archtecture

@@ -5,24 +5,30 @@
     <meta charset="UTF-8">
     <title>{% block title %}Oxygen{% endblock %}</title>
 
-    <link rel="stylesheet" href="{% static 'global/base.css' %}">
+    <link rel="stylesheet" href="{% static 'global/base.css' %}?v=2">
     {% block styles %}{% endblock %}
 </head>
 <body>
-
+<div class="aasd">
 <div class="navbar">
     <div class="nav-container">
         <a href="/" class="logo">Oxygen</a>
-
+        <div class="nav-links">
+            <a href="{% url 'shop_list' %}">Магазины</a>
+            <a href="{% url 'catalog:category_list' %}">Категории</a>
+            <a href="{% url 'catalog:product_list' %}">Товары</a>
+        </div>
         <div class="nav-links">
             <a href="{% url 'profile' %}">Профиль</a>
             <a href="{% url 'logout' %}">Выйти</a>
         </div>
     </div>
 </div>
-
+<center>
 <div class="app-container">
     {% block content %}{% endblock %}
+</div>
+</center>
 </div>
 
 </body>
