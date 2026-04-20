@@ -18,6 +18,11 @@ python -m venv venv
 source .venv\bin\activate
 pip install -r requirements.txt
 ```
+# How run server 
+```
+cd OxygenDB
+python manage.py runserver 
+```
 
 ## and Important
 Please fill .env file
