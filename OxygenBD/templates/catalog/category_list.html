@@ -1,33 +1,36 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'category/styles/list.css' %}?v=2.6">
+{% endblock %}
 
 {% block content %}
 
-<h1>Categories</h1>
+<h2>Категории</h2>
+
 {% if user.role == "admin" %}
-    <a href="{% url 'catalog:category_create' %}">+ Create category</a>
+    <a href="{% url 'catalog:category_create' %}" class="create">Создать катеогрию</a>
 {% endif %}
-<style>
-    ul {
-    list-style: none; /* Убирает точки */
-    padding: 0;       /* Убирает отступы слева */
-    margin: 0;        /* Убирает внешние отступы */
-}
+<div style="margin-top: 50px;">
 <ul>
     {% for category in categories %}
-        <li>
-            {{ category.name }}
-
-            {% if category.parent %}
-                (parent: {{ category.parent.name }})
-            {% endif %}
-
-            <a href="{% url 'catalog:category_update' category.pk %}">Edit</a>
-
-            <a href="{% url 'catalog:category_delete' category.pk %}">Delete</a>
-        </li>
+        <li class="card">
+                <h3>{{ category.name }}</h3>
+                <p>
+                {% if category.parent %}
+                    (parent: {{ category.parent.name }})
+                {% endif %}
+                </p>
+                <div style="display:flex;">
+                <a href="{% url 'catalog:category_update' category.pk %}" class="button">Изменить</a>
+             
+                <a href="{% url 'catalog:category_delete' category.pk %}" class="button" style="background: #ff4d4d;">Удалить</a>
+                </div>
+            </li>
     {% empty %}
         <p>No categories</p>
     {% endfor %}
 </ul>
-
+</div>
 {% endblock %}

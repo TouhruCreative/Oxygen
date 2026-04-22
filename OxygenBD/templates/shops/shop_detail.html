@@ -3,7 +3,8 @@
 {% block title %}{{ shop.name }}{% endblock %}
 
 {% block content %}
-<a href="{% url 'shop_list' %}" class="link">← Назад</a>
+<a href="{% url 'shop_list' %}" class="button">Назад</a>
+
 <div class="card">
 
     <h2>{{ shop.name }}</h2>
@@ -25,7 +26,9 @@
         <div class="card">
             <h3>{{ product.name }}</h3>
             <p>{{ product.description|truncatechars:100 }}</p>
+        </br>
             <p>Цена: {{ product.price }}</p>
+            <a href="{% url 'catalog:product_detail' product.pk %}" class="button">открыть</a>
         </div>
     {% empty %}
         <p>Товаров нет</p>

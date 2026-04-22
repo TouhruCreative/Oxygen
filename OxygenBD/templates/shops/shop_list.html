@@ -6,9 +6,8 @@
 {% block content %}
 
 <h2>Магазины</h2>
-</br>
 {% if user.role == "admin" %}
-<a href="{% url 'shop_create' %}" style="margin-top: 100px;" class="button" >Создать магазин</a>
+<a href="{% url 'shop_create' %}"  class="create" >Создать магазин</a>
 {% endif %}
 <div style="margin-top: 50px;">
     {% for shop in shops %}
@@ -16,8 +15,8 @@
             <h3>{{ shop.name }}</h3>
             <p>{{ shop.description|truncatechars:100 }}</p>
             <p>Рейтинг: {{ shop.rating }}</p>
-
-            <a href="{% url 'shop_detail' shop.id %}">Открыть</a>
+            </br>
+            <a href="{% url 'shop_detail' shop.id %}" class="button">Открыть</a>
         </div>
     {% empty %}
         <p>Магазинов пока нет</p>

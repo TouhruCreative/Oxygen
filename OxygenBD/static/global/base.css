@@ -71,6 +71,7 @@ body {
 
 /* UI */
 .card {
+    margin-top:20px;
     background: #fff;
     border-radius: 16px;
     padding: 30px;
@@ -86,11 +87,23 @@ body {
 }
 
 .button {
-    margin-top: 50px;
+    text-decoration: none;
+    margin-top: 20px;
     width: 100%;
     padding: 20px;
     border-radius: 10px;
     border: none;
     background: #111;
     color: white;
+}
+
+.create {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: #111;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+    padding: 20px;
 }

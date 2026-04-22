@@ -1,29 +1,28 @@
 {% extends "base.html" %}
+{% load static%}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'category/styles/productlist.css' %}?v=2.6">
+{% endblock %}
 
 {% block content %}
 
-<h1>Products</h1>
+<h2>Продукт</h2>
 
-<a href="{% url 'catalog:product_create' %}">+ Create product</a>
-<style>
-    ul {
-    list-style: none; /* Убирает точки */
-    padding: 0;       /* Убирает отступы слева */
-    margin: 0;        /* Убирает внешние отступы */
-}
-</style>
-<ul >
+<a href="{% url 'catalog:product_create' %}" class="create">Создать продукт</a>
+<div style="margin-top: 50px;">
+<div style="display: block; grid-template-colums: repeat(3,auto);">
     {% for product in products %}
-        <li>
+        <div>
             <div class="card">
-            <a href="{% url 'catalog:product_detail' product.pk %}">
-                {{ product.name }}
-            </a>
+                <h3>{{ product.name }}</h3>
+                <div style="display:flex;">
+                <a href="{% url 'catalog:product_detail' product.pk %}" class="button">открыть</a>
+                </div>
+            </div>
         </div>
-        </li>
     {% empty %}
-        <p>No products</p>
+        <p>Нету продуктов :(</p>
     {% endfor %}
-</ul>
-
+    </div>
+</div>
 {% endblock %}

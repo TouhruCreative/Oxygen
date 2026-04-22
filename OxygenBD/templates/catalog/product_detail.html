@@ -2,20 +2,27 @@
 
 {% block content %}
 
+<a href="{% url 'catalog:product_list' %}"class="button">Назад</a>
+
+<div class="card">
 <h1>{{ product.name }}</h1>
+<p>Создано: {{ product.created_at }}</p>
+
 
 <p>{{ product.description }}</p>
-<p>Created: {{ product.created_at }}</p>
 
-<hr>
+{% if  user == product.shop.owner %}
+<div style="display:flex;">
+<a href="{% url 'catalog:product_update' product.pk %}" class="button">Изменить</a>
 
-<a href="{% url 'catalog:product_update' product.pk %}">Edit</a>
-<div class="card">
 <form method="post" action="{% url 'catalog:product_delete' product.pk %}">
     {% csrf_token %}
-    <button type="submit">Delete</button>
+    <button type="submit" class="button">Delete</button>
 </form>
 </div>
-<a href="{% url 'catalog:product_list' %}">Back</a>
+{% endif %}
+
+</div>
+
 
 {% endblock %}

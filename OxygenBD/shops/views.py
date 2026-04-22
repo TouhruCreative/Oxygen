@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Shop
+from catalog.models import Product
 
 def shop_list_view(request):
     shops = Shop.objects.all()
@@ -11,9 +12,10 @@ def shop_list_view(request):
 
 def shop_detail_view(request, pk):
     shop = get_object_or_404(Shop, id=pk)
-
+    products = Product.objects.filter(shop=shop)
     return render(request, "shops/shop_detail.html", {
-        "shop": shop
+        "shop": shop,
+        "products": products
     })
 
 @login_required
