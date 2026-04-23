@@ -15,11 +15,13 @@
     <p><strong>Создан:</strong> {{ shop.created_at }}</p>
 
 
-    {% if user == shop.owner %}
+    {% if user == shop.owner or user.role == "admin"%}
+    <div style="display: block; grid-template-colums: repeat(3,auto); margin-top:20px;margin-bottom:30px;">
         <a href="{% url 'shop_edit' shop.id %}" class="button">Редактировать</a>
         <a href="{% url 'shop_delete' shop.id %}" class="button" style="background:red;">Удалить</a>
-    {% endif %}
-
+ 
+        {% endif %}
+    </div>
     <h2>Товары</h2>
 
     {% for product in products %}
@@ -31,7 +33,7 @@
             <a href="{% url 'catalog:product_detail' product.pk %}" class="button">открыть</a>
         </div>
     {% empty %}
-        <p>Товаров нет</p>
+        <p>Товаров ещё нет :(</p>
     {% endfor %}
     
 

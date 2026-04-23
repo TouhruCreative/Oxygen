@@ -22,14 +22,16 @@
                     (parent: {{ category.parent.name }})
                 {% endif %}
                 </p>
+                {% if user.role == "admin" %}
                 <div style="display:flex;">
                 <a href="{% url 'catalog:category_update' category.pk %}" class="button">Изменить</a>
              
                 <a href="{% url 'catalog:category_delete' category.pk %}" class="button" style="background: #ff4d4d;">Удалить</a>
                 </div>
+                {% endif %}
             </li>
     {% empty %}
-        <p>No categories</p>
+        <p>Категорий ещё нет :(</p>
     {% endfor %}
 </ul>
 </div>

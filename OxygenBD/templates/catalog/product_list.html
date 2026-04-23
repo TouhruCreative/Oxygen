@@ -7,8 +7,9 @@
 {% block content %}
 
 <h2>Продукт</h2>
-
+{% if user.role == "admin" %}
 <a href="{% url 'catalog:product_create' %}" class="create">Создать продукт</a>
+{% endif %}
 <div style="margin-top: 50px;">
 <div style="display: block; grid-template-colums: repeat(3,auto);">
     {% for product in products %}
