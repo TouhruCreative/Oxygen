@@ -15,7 +15,7 @@
     {% for product in products %}
         <div>
             <div class="card">
-                <h3>{{ product.name }}</h3>
+                <h3>{{ product.name }} - {{ product.price }}$</h3>
                 <div style="display:flex;">
                 <a href="{% url 'catalog:product_detail' product.pk %}" class="button">открыть</a>
                 </div>

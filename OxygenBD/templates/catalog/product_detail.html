@@ -9,7 +9,7 @@
 <p>Создано: {{ product.created_at }}</p>
 
 
-<p>{{ product.description }}</p>
+<p>Цена: {{product.price}}$</br>{{ product.description }}</p>
 
 {% if  user == product.shop.owner %}
 <div style="display:flex;">
